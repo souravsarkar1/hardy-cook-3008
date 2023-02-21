@@ -1,0 +1,34 @@
+.nav1{
+    display: flex;
+    justify-content: space-around;
+    height: 31px;
+    background-color: rgb(225, 219, 219);
+}
+.nav2{
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid red; */
+    height: 40px;
+    font-size: 25px;
+    gap: 179px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.nav21{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    justify-content: space-around;
+    margin-left: 30px;
+}
+.nav21 :hover{
+    text-decoration: underline;
+}
+.nav22{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 40%;
+}
+.nav22 Input{
+    width: 321px;
+} 
