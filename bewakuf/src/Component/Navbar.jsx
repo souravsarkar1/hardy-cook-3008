@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div>
       <Navbar1/>
-    
+      <Navbar2/>
       <hr/>
     </div>
   )
