@@ -12,14 +12,68 @@ import {
     Heading,
     Text,
     useColorModeValue
-   
+
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
-export default function Signup() {
-    const [showPassword, setShowPassword] = useState(false);
+import axios from 'axios'
+import { Authcontext } from '../Context/Authcontext';
 
+export default function Signup() {
+    const { user } = useContext(Authcontext);
+    const [showPassword, setShowPassword] = useState(false);
+    const [formState, setFormState] = useState({
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: ''
+    });
+    const { firstname, lastname, email, password } = formState;
+
+
+    const handleChange = (e) => {
+        const { name, value, type } = e.target;
+        const val = type === "number" ? Number(value) : value;
+        setFormState({ ...formState, [name]: val })
+    }
+    // for(let i = 0;i<user.length;i++){
+
+    // }
+    //console.log(isRegister);
+    const addUsers = (data = { firstname: '', lastname: '', email: '', password: '' }) => {
+        return axios(
+            {
+                method: 'post',
+                url: `http://localhost:8080/user`,
+                data: data
+            }
+        )
+    }
+    // if(firstname === null || lastname===null || email===null || password===null){
+    //     alert('Please Fill All The Field');
+    // }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        for(let users of user){
+           
+            if(users.email===email){
+                alert('taken')
+                break;
+            }else{
+                addUsers(formState);
+                alert('ok');
+                break;
+            }
+        }
+        setFormState({
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: ''
+        });
+    }
     return (
         <Flex
             minH={'100vh'}
@@ -41,56 +95,60 @@ export default function Signup() {
                     boxShadow={'lg'}
                     p={8}>
                     <Stack spacing={4}>
-                        <HStack>
-                            <Box>
-                                <FormControl id="firstName" isRequired>
-                                    <FormLabel>First Name</FormLabel>
-                                    <Input type="text" />
-                                </FormControl>
-                            </Box>
-                            <Box>
-                                <FormControl id="lastName">
-                                    <FormLabel>Last Name</FormLabel>
-                                    <Input type="text" />
-                                </FormControl>
-                            </Box>
-                        </HStack>
-                        <FormControl id="email" isRequired>
-                            <FormLabel>Email address</FormLabel>
-                            <Input type="email" />
+                        <FormControl>
+                            <HStack>
+                                <Box>
+                                    <FormControl id="firstName" isRequired>
+                                        <FormLabel>First Name</FormLabel>
+                                        <Input type="text" value={firstname} name="firstname" onChange={handleChange} />
+                                    </FormControl>
+                                </Box>
+                                <Box>
+                                    <FormControl id="lastName">
+                                        <FormLabel>Last Name</FormLabel>
+                                        <Input type="text" value={lastname} name="lastname" onChange={handleChange} />
+                                    </FormControl>
+                                </Box>
+                            </HStack>
+                            <FormControl id="email" isRequired>
+                                <FormLabel>Email address</FormLabel>
+                                <Input type="email" value={email} name="email" onChange={handleChange} />
+                            </FormControl>
+                            <FormControl id="password" isRequired>
+                                <FormLabel>Password</FormLabel>
+                                <InputGroup>
+                                    <Input type={showPassword ? 'text' : 'password'} value={password} name="password" onChange={handleChange} />
+                                    <InputRightElement h={'full'}>
+                                        <Button
+                                            variant={'ghost'}
+                                            onClick={() =>
+                                                setShowPassword((showPassword) => !showPassword)
+                                            }>
+                                            {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                                        </Button>
+                                    </InputRightElement>
+                                </InputGroup>
+                            </FormControl>
+                            <Stack spacing={10} pt={2}>
+                                <Button
+                                    loadingText="Submitting"
+                                    size="lg"
+                                    bg={'blue.400'}
+                                    color={'white'}
+                                    _hover={{
+                                        bg: 'blue.500',
+                                    }}
+                                    onClick={handleSubmit}>
+                                    Sign up
+                                </Button>
+                            </Stack>
+                            <Stack pt={6}>
+                                <Text align={'center'}>
+                                    Already a user? <Link color={'blue.400'} to='/login'>Login</Link>
+                                </Text>
+                            </Stack>
+
                         </FormControl>
-                        <FormControl id="password" isRequired>
-                            <FormLabel>Password</FormLabel>
-                            <InputGroup>
-                                <Input type={showPassword ? 'text' : 'password'} />
-                                <InputRightElement h={'full'}>
-                                    <Button
-                                        variant={'ghost'}
-                                        onClick={() =>
-                                            setShowPassword((showPassword) => !showPassword)
-                                        }>
-                                        {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                                    </Button>
-                                </InputRightElement>
-                            </InputGroup>
-                        </FormControl>
-                        <Stack spacing={10} pt={2}>
-                            <Button
-                                loadingText="Submitting"
-                                size="lg"
-                                bg={'blue.400'}
-                                color={'white'}
-                                _hover={{
-                                    bg: 'blue.500',
-                                }}>
-                                Sign up
-                            </Button>
-                        </Stack>
-                        <Stack pt={6}>
-                            <Text align={'center'}>
-                                Already a user? <Link color={'blue.400'} to = '/login'>Login</Link>
-                            </Text>
-                        </Stack>
                     </Stack>
                 </Box>
             </Stack>

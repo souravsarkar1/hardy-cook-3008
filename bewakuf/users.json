@@ -1,0 +1,19 @@
+{
+  "user": [
+    
+    {
+      "firstname": "ratna",
+      "lastname": "sarkar",
+      "email": "ratna123@gmail.com",
+      "password": "123456779",
+      "id": 2
+    },
+    {
+      "id": 1,
+      "firstname": "Sourav",
+      "lastname": "Sarkar",
+      "email": "souravsantipur9635@gmail.com",
+      "password": "Sou6294@#"
+    }
+  ]
+}
