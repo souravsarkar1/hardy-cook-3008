@@ -14,14 +14,14 @@ import {
     useColorModeValue
 
 } from '@chakra-ui/react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import { Authcontext } from '../Context/Authcontext';
+//import { Authcontext } from '../Context/Authcontext';
 
 export default function Signup() {
-    const { user } = useContext(Authcontext);
+    //const { user } = useContext(Authcontext);
     const [showPassword, setShowPassword] = useState(false);
     const [formState, setFormState] = useState({
         firstname: '',
@@ -45,7 +45,7 @@ export default function Signup() {
         return axios(
             {
                 method: 'post',
-                url: `http://localhost:8080/user`,
+                url: `http://localhost:9090/user`,
                 data: data
             }
         )
@@ -55,18 +55,18 @@ export default function Signup() {
     // }
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        for(let users of user){
+        addUsers(formState);
+        // for(let users of user){
            
-            if(users.email===email){
-                alert('taken')
-                break;
-            }else{
-                addUsers(formState);
-                alert('ok');
-                break;
-            }
-        }
+        //     if(users.email===email){
+        //         alert('taken')
+        //         break;
+        //     }else{
+               
+        //         alert('ok');
+        //         break;
+        //     }
+        // }
         setFormState({
             firstname: '',
             lastname: '',

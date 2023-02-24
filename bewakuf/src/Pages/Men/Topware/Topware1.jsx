@@ -2,15 +2,15 @@ import { Box, Center, Grid, GridItem, Image, Text, Button } from '@chakra-ui/rea
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import axios from 'axios';
-import ProductCart from '../../Component/ProductComponent/ProductCart';
-//http://localhost:9090/womemenProductsTopWare
+import ProductCart from '../../../Component/ProductComponent/ProductCart';
 
-const Topwarewomen = () => {
+//http://localhost:9090/menProductsTBottomWare
+const Topware1 = () => {
   const [links, setLinks] = useState([]);
   const [page, setPage] = useState(1);
   const limit = 12;
   const getData = () => {
-    axios.get(`http://localhost:9090/womemenProductsTopWare?_page=${page}&_limit=${limit}`).then((res) => {
+    axios.get(`http://localhost:9090/menProductsTBottomWare?_page=${page}&_limit=${limit}`).then((res) => {
       setLinks(res.data);
     }).catch((err) => {
       console.log(err);
@@ -27,13 +27,13 @@ const Topwarewomen = () => {
           {links.map((el) => (
 
             <ProductCart
-            id={el.id}
-            img={el.img}
-            title={el.title}
-            price={el.price}
-            originalprice={el.originalprice}
-            rating={el.rating}
-            />
+           id={el.id}
+           img={el.img}
+           title={el.title}
+           price={el.price}
+           originalprice={el.originalprice}
+           rating={el.rating}
+           />
 
           ))}
         </Grid>
@@ -87,5 +87,4 @@ const Topwarewomen = () => {
   )
 }
 
-export default Topwarewomen
- 
+export default Topware1

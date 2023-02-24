@@ -9,9 +9,10 @@
     flex-direction: row;
     /* border: 1px solid red; */
     height: 40px;
-    font-size: 25px;
+    font-size: 15px;
     gap: 179px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    align-items: center;
 }
 .nav21{
     display: flex;
@@ -28,7 +29,14 @@
     flex-direction: row;
     justify-content: space-around;
     width: 40%;
+    align-items: center;
 }
 .nav22 Input{
     width: 321px;
 } 
+.nav3{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    margin: auto;
+}

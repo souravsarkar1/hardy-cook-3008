@@ -1,6 +1,5 @@
 {
   "user": [
-    
     {
       "firstname": "ratna",
       "lastname": "sarkar",
@@ -14,6 +13,48 @@
       "lastname": "Sarkar",
       "email": "souravsantipur9635@gmail.com",
       "password": "Sou6294@#"
+    },
+    {
+      "firstname": "Pritha",
+      "lastname": "Sarkar",
+      "email": "pritha@gmail.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "firstname": "Sourav",
+      "lastname": "Sarkar",
+      "email": "souravsantipur9635@gmail.com",
+      "password": "0000",
+      "id": 4
+    },
+    {
+      "firstname": "Sourav",
+      "lastname": "Sarkar",
+      "email": "souravsantipur9635@gmail.com",
+      "password": "000",
+      "id": 5
+    },
+    {
+      "firstname": "Sourav",
+      "lastname": "Sarkar",
+      "email": "souravsantipur9635@gmail.com",
+      "password": "",
+      "id": 6
+    },
+    {
+      "firstname": "Sourav",
+      "lastname": "Sarkar",
+      "email": "souravsantipur9635@gmail.com",
+      "password": "",
+      "id": 7
+    },
+    {
+      "firstname": "Sourav",
+      "lastname": "Sarkar",
+      "email": "ww@gmail.com",
+      "password": "123",
+      "id": 8
     }
   ]
 }
