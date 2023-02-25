@@ -17,12 +17,14 @@ import {
     ListItem,
   } from '@chakra-ui/react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { Authcontext } from '../../Context/Authcontext';
   
   export default function MenTopwareSinglePage() {
+    const {cartdata,cartData} = useContext(Authcontext);
     const {id} = useParams();
     const [data,setData] = useState([]);
     axios.get(`http://localhost:9090/menProductsTopWare/${id}`).then((res)=>{
@@ -30,6 +32,7 @@ import { useParams } from 'react-router-dom';
     }).catch((err)=>{
         console.log(err);
     })
+    cartData(data);
     return (
       <Container maxW={'7xl'}>
         <SimpleGrid
@@ -183,7 +186,9 @@ import { useParams } from 'react-router-dom';
                 transform: 'translateY(2px)',
                 boxShadow: 'lg',
               }}>
+              <Link to='/cart'>
               Add to cart
+              </Link>
             </Button>
   
             <Stack direction="row" alignItems="center" justifyContent={'center'}>

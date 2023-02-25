@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Container,
   Flex,
@@ -25,8 +26,53 @@ import {
   MdOutlineEmail,
 } from 'react-icons/md';
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
+import { useState } from 'react';
+import axios from 'axios';
 
-export default function contact() {
+export default function Contact() {
+ const [fromState,setFormState] = useState({
+  name:"",
+  email:"",
+  message:""
+ });
+ const {name,email,message} = fromState;
+ 
+ const handleChange = (e)=>{
+  const { name, value, type } = e.target;
+  //const val = type === "number" ? Number(value) : value;
+  const val = type === "number" ? Number(value) : value;
+  setFormState({ ...fromState, [name]: val })
+ }
+ const userMessage = (data = { name: '', email: '', message: ''}) => {
+  return axios(
+      {
+          method: 'post',
+          url: `http://localhost:9090/userMesage`,
+          data: data
+      }
+  )
+}
+const handleSubmit = (e) => {
+  e.preventDefault();
+  userMessage(fromState);
+  console.log('Ratna');
+  // for(let users of user){
+     
+  //     if(users.email===email){
+  //         alert('taken')
+  //         break;
+  //     }else{
+         
+  //         alert('ok');
+  //         break;
+  //     }
+  // }
+  setFormState({
+      name:'',
+      email:'',
+      message:''
+  });
+}
   return (
     <Container bg="#5d76c9" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
@@ -118,10 +164,11 @@ export default function contact() {
                         <FormLabel>Your Name</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
+                          
                             pointerEvents="none"
                             children={<BsPerson color="gray.800" />}
                           />
-                          <Input type="text" size="md" />
+                          <Input type="text" size="md" value={name} name="name" onChange={handleChange}/>
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
@@ -131,7 +178,7 @@ export default function contact() {
                             pointerEvents="none"
                             children={<MdOutlineEmail color="gray.800" />}
                           />
-                          <Input type="text" size="md" />
+                          <Input type="text" size="md" value={email} name="email" onChange={handleChange}/>
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
@@ -142,6 +189,7 @@ export default function contact() {
                             borderRadius: 'gray.300',
                           }}
                           placeholder="message"
+                          value={message} name="message" onChange={handleChange}
                         />
                       </FormControl>
                       <FormControl id="name" float="right">
@@ -149,7 +197,9 @@ export default function contact() {
                           variant="solid"
                           bg="#0D74FF"
                           color="white"
-                          _hover={{}}>
+                          _hover={{}}
+                          onClick={handleSubmit}
+                          >
                           Send Message
                         </Button>
                       </FormControl>

@@ -1,5 +1,6 @@
 import { Box ,Center,Flex,Image} from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 let links = [
     'https://images.bewakoof.com/uploads/grid/app/category-box-new-printed-tshirts-1668773246.jpg',
     'https://images.bewakoof.com/uploads/grid/app/category-box-new-ovrszd-w-1676463439.jpg',
@@ -12,11 +13,13 @@ const Hero6 = () => {
   return (
     <Box>
     <Flex>
+    <Link to='/women'>
     <Center m='auto'>
     {links.map((el)=>(
         <Image src={el}/>
     ))}
     </Center>
+    </Link>
     </Flex>
     </Box>
   )

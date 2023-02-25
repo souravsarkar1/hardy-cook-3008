@@ -17,6 +17,7 @@ import Men from '../Pages/Men/Men'
 import Women from '../Pages/Women/Women'
 import MenTopwareSinglePage from '../Pages/SingleProduct/MenTopwareSinglePage'
 import MenBottomwareSingle from '../Pages/SingleProduct/MenBottomwareSingle'
+import Checkoutpage from '../Pages/Checkoutpage'
 
 const Allroutes = () => {
   return (
@@ -39,7 +40,7 @@ const Allroutes = () => {
       <Route path='/women' element={<Women/>}></Route>
       <Route path='/products/:id' element={<MenTopwareSinglePage/>}></Route>
       <Route path='/products/:id' element={<MenBottomwareSingle/>}></Route>
-      <Route></Route>
+      <Route path='/checkout' element={<Checkoutpage/>}></Route>
       <Route></Route>
       <Route></Route>
       <Route></Route>

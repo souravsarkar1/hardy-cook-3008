@@ -5,8 +5,9 @@ import 'swiper/css';
 import 'swiper/css/free-mode'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Text} from '@chakra-ui/react';
+import { Link, NavLink } from 'react-router-dom';
 let cardDeteals = [
-    {img:'https://images.bewakoof.com/t320/women-pink-oversized-printed-dress-554162-1671775633-1.jpg' , deteals : 'Women Dresses & Fashion' ,price : '1360', originalprice:'2000' ,discount :'35%'},
+    {img:'https://images.bewakoof.com/t320/women-pink-oversized-printed-dress-554162-1671775633-1.jpg' , deteals : 'Women Dresses & Fashion' ,price : '1360', originalprice:'2000' ,discount :'35%',to:'/women'},
     {img:'https://images.bewakoof.com/t320/men-s-ginger-root-solid-oversized-fit-t-shirt-552870-1672295637-1.jpg' , deteals : 'Men Dresses & Fashion' ,price : '1360', originalprice:'2000' ,discount :'35%'},
     {img:'https://images.bewakoof.com/t320/men-s-purple-the-warrior-king-graphic-printed-oversized-t-shirt-565902-1672377608-1.jpg' , deteals : 'Men Dresses & Fashion' ,price : '1360', originalprice:'2000' ,discount :'35%'},
     {img:'https://images.bewakoof.com/t320/men-s-black-metallica-oversized-fit-t-shirt-564902-1671801834-1.jpg' , deteals : 'Men Dresses & Fashion' ,price : '1360', originalprice:'2000' ,discount :'35%'},
@@ -35,7 +36,7 @@ const Hero7 = () => {
                     spaceBetween={30}
 
                 >
-
+                <NavLink to='/women'>
                   {cardDeteals.map((el)=>(
                     <SwiperSlide>
                     <img src={el.img} alt={el.deteals} />
@@ -45,7 +46,7 @@ const Hero7 = () => {
                     <Text textAlign='right' color='red'>Only Few Left</Text>
                     </SwiperSlide>
                   ))}
-
+                  </NavLink>
                 </Swiper>
             </div>
         </div>

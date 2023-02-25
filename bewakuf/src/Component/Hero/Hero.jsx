@@ -15,10 +15,11 @@ import Hero12 from './Hero12'
 import Hero13 from './Hero13'
 import Hero14 from './Hero14'
 import Hero15 from './Hero15'
+import { Link } from 'react-router-dom'
 const Hero = () => {
     return (
         <div>
-            <Hero1 />
+           <Link to='/men'> <Hero1 /></Link>
             <br />
             <Hero2 />
             <br />

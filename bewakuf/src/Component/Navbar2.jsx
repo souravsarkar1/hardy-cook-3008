@@ -5,7 +5,7 @@ import { Authcontext } from '../Context/Authcontext';
 const links = [
     {to:'/men', title : 'Men'},
     {to:'/women', title : 'Women'},
-    {to:'/electronics', title : 'Electronics'},
+    {to:'/mobilecover', title : 'Mobile Cover'},
     
 ]
 const Navbar2 = () => {

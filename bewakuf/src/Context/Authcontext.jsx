@@ -7,8 +7,9 @@ const AuthcontextProvider = ({children}) => {
     const [user,setUser] = useState([]);
     const [isAuth,setisAuth] = useState(false);
     const [userName,setUserNmae] = useState('');
+    const [cartdata , setCartData] = useState([]);
     let getUser = ()=>{
-        axios.get('http://localhost:8080/user').then((res)=>{
+        axios.get('http://localhost:9090/user').then((res)=>{
             setUser(res.data);
         })
     }
@@ -29,8 +30,11 @@ const AuthcontextProvider = ({children}) => {
         setisAuth(false);
         setUserNmae('')
     }
+    const cartData = (data)=>{
+      setCartData(data);
+    }
   return (
-    <Authcontext.Provider value={{user,login,logout,userName,isAuth,menProductsTBottomWare,menProductsTopWare,menProductsWinter,womemenProductsTopWare}}>
+    <Authcontext.Provider value={{user,login,logout,userName,isAuth,menProductsTBottomWare,menProductsTopWare,menProductsWinter,womemenProductsTopWare,cartData,cartdata}}>
       {children}
     </Authcontext.Provider>
   )
